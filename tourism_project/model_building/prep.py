@@ -65,18 +65,6 @@ ytest.to_csv("ytest.csv",index=False)
 
 files = ["Xtrain.csv","Xtest.csv","ytrain.csv","ytest.csv"]
 
-# Make sure your Colab secret named 'HF_TOKEN' contains your actual Hugging Face API token (e.g., a string starting with 'hf_').
-hf_token = userdata.get('HF_TOKEN')
-
-# Check if the token is the placeholder value and raise a specific error
-if hf_token == 'HF_TOKEN_MLOps':
-    raise ValueError("Your Hugging Face token is still the placeholder 'HF_TOKEN_MLOps'. "
-                     "Please update your Colab secret named 'HF_TOKEN' with your actual Hugging Face API token.")
-
-os.environ["HF_TOKEN"] = hf_token
-
-# Initialize API client
-api = HfApi(token=os.getenv("HF_TOKEN"))
 
 for file_path in files:
     api.upload_file(

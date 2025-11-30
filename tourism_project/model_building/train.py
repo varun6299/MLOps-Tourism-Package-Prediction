@@ -17,7 +17,7 @@ from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 import mlflow
 
 # Set the tracking URL for MLflow
-mlflow.set_tracking_uri(public_url)
+mlflow.set_tracking_uri("http://localhost:5000")
 
 # Set the name for the experiment
 mlflow.set_experiment("MLOps_Tourism_Package_Predictor")

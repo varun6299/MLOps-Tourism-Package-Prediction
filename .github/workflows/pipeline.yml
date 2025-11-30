@@ -35,7 +35,7 @@ jobs:
         run: python tourism_project/model_building/prep.py
 
 
-  model-traning:
+  model-training:
     needs: data-prep
     runs-on: ubuntu-latest
     steps:

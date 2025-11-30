@@ -6,6 +6,8 @@ import os
 repo_id = "Varun6299/Tourism-Package-Prediction"
 repo_type = "dataset"
 
+print("repo id:",repo_id)
+
 # Initialize API client
 api = HfApi(token=os.getenv("HF_TOKEN"))
 

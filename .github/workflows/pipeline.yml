@@ -13,6 +13,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Dependencies
         run: pip install -r tourism_project/requirements.txt
+      - name: Make data_register.py executable
+        run: chmod +x tourism_project/model_building/data_register.py
       - name: Upload Dataset to Hugging Face Hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -25,6 +27,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Dependencies
         run: pip install -r tourism_project/requirements.txt
+      - name: Make prep.py executable
+        run: chmod +x tourism_project/model_building/prep.py
       - name: Run Data Preparation
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -38,9 +42,11 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install Dependencies
         run: pip install -r tourism_project/requirements.txt
+      - name: Make train.py executable
+        run: chmod +x tourism_project/model_building/train.py
       - name: Start MLflow Server
         run: |
-          nohup mlflow ui --host 0.0.0.0 --port 5000 &  # Run MLflow UI in the background
+          nohup mlflow ui --host 0.0.0.0 --port 5000 &
           sleep 5  # Wait for a moment to let the server starts
       - name: Model Building
         env:
@@ -54,7 +60,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install Dependencies
-        run: <add_code_here>
+        run: pip install -r tourism_project/deployment/requirements.txt
+      - name: Make hosting.py executable
+        run: chmod +x tourism_project/hosting/hosting.py
       - name: Push files to Frontend Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
